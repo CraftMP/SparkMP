@@ -1,0 +1,33 @@
+plugins {
+    id 'java-library'
+    id 'ca.stellardrift.gitpatcher' version '1.1.0' apply false
+}
+
+group = 'cn.afternode.craftmp'
+version = '1.0-SNAPSHOT'
+
+subprojects {
+    group = rootProject.group
+    version = rootProject.version
+
+    plugins.apply("java")
+    plugins.apply("ca.stellardrift.gitpatcher")
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
