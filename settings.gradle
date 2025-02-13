@@ -1,3 +1,5 @@
 rootProject.name = 'SparkMP'
 
 includeBuild "spark"
+
+include ":mirai"
