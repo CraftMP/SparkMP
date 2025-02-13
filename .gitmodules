@@ -1,0 +1,3 @@
+[submodule "upstreams/spark"]
+	path = upstreams/spark
+	url = https://github.com/lucko/spark.git

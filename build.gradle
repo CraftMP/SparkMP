@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id 'ca.stellardrift.gitpatcher' version '1.1.0' apply false
+    id 'ca.stellardrift.gitpatcher' version '1.1.0'
 }
 
 group = 'cn.afternode.craftmp'
@@ -11,7 +11,6 @@ subprojects {
     version = rootProject.version
 
     plugins.apply("java")
-    plugins.apply("ca.stellardrift.gitpatcher")
 
     repositories {
         mavenCentral()
@@ -29,5 +28,13 @@ subprojects {
     java {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+gitPatcher {
+    patchedRepos.create("spark") {
+        submodule = "upstreams/spark"
+        target = new File("spark")
+        patches = new File("patches")
     }
 }

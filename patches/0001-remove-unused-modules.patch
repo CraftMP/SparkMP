@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Zyklone <h3xadecimal@afternode.cn>
+Date: Thu, 13 Feb 2025 21:23:06 +0800
+Subject: [PATCH] remove unused modules
+
+
+diff --git a/settings.gradle b/settings.gradle
+index d689d80725b5a5098e429f6f2f2f454b68510ebc..3d8415b4d26147b036c689f5aa9b1647280a86e3 100644
+--- a/settings.gradle
++++ b/settings.gradle
+@@ -23,14 +23,6 @@ plugins {
+ rootProject.name = 'spark'
+ include (
+         'spark-api',
+-        'spark-bukkit',
+-        'spark-bungeecord',
+         'spark-common',
+-        'spark-fabric',
+-        'spark-forge',
+-        'spark-neoforge',
+-        'spark-paper',
+-        'spark-sponge',
+         'spark-standalone-agent',
+-        'spark-velocity',
+ )

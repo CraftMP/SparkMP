@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Zyklone <h3xadecimal@afternode.cn>
+Date: Thu, 13 Feb 2025 21:29:51 +0800
+Subject: [PATCH] build changes
+
+
+diff --git a/build.gradle b/build.gradle
+index cc6d1d2afc5bab9318a1fe95e16a33b569bda290..7f60daa9c123f3948a692c279a6231240b822576 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -84,10 +84,11 @@ subprojects {
+ def determinePatchVersion() {
+     def tagInfo = new ByteArrayOutputStream()
+     exec {
++        workingDir file("..")
+         commandLine 'git', 'describe', '--tags'
+         standardOutput = tagInfo
+     }
+     tagInfo = tagInfo.toString()
+ 
+-    return tagInfo.contains('-') ? tagInfo.split("-")[1] : 0
++    return "cmp-" + tagInfo
+ }
+\ No newline at end of file
