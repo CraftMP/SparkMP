@@ -23,7 +23,7 @@ public class MiraiSparkPlugin extends JavaPlugin implements SparkPlugin {
     private SparkPlatform platform;
 
     public MiraiSparkPlugin() {
-        super(JvmPluginDescription.loadFromResource("mirai.yml"));
+        super(JvmPluginDescription.loadFromResource("mirai.yml", MiraiSparkPlugin.class.getClassLoader()));
     }
 
     @Override
