@@ -3,21 +3,26 @@ dependencies {
         exclude group: 'net.mamoe', module: 'mirai-core-api'
         exclude group: 'net.mamoe', module: 'mirai-core-utils'
     } // mirai-core 的 API
-    implementation("net.mamoe:mirai-core-api-jvm:2.9.1") {
+    compileOnly("net.mamoe:mirai-core-api-jvm:2.9.1") {
         exclude group: 'net.mamoe', module: 'mirai-core-utils'
     }
-    implementation("net.mamoe:mirai-core-utils-jvm:2.9.1")
+    compileOnly("net.mamoe:mirai-core-utils-jvm:2.9.1")
     compileOnly("net.mamoe:mirai-console:2.9.1")
 
-    implementation "me.lucko:spark-common"
-    implementation 'net.kyori:adventure-text-logger-slf4j:4.17.0'
+    include "me.lucko:spark-common"
+    include 'net.kyori:adventure-text-logger-slf4j:4.17.0'
 }
 
 processResources {
-    from(sourceSets.main.resources.srcDirs) {
+    filesMatching("mirai.yml") {
         expand (
                 'version': project.version
         )
-        include 'mirai.yml'
+    }
+}
+
+shadowJar {
+    dependencies {
+        exclude dependency("org.slf4j:.*")
     }
 }

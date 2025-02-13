@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'ca.stellardrift.gitpatcher' version '1.1.0'
+    id 'com.gradleup.shadow' version '9.0.0-beta8' apply false
 }
 
 group = 'cn.afternode.craftmp'
@@ -11,6 +12,12 @@ subprojects {
     version = rootProject.version
 
     plugins.apply("java")
+    plugins.apply("com.gradleup.shadow")
+
+    configurations {
+        include
+        implementation.extendsFrom(include)
+    }
 
     repositories {
         mavenCentral()
@@ -31,6 +38,20 @@ subprojects {
     java {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    shadowJar {
+        configurations = [project.configurations.include]
+
+        relocate 'net.kyori.adventure', 'me.lucko.spark.lib.adventure'
+        relocate 'net.kyori.examination', 'me.lucko.spark.lib.adventure.examination'
+        relocate 'net.kyori.option', 'me.lucko.spark.lib.adventure.option'
+        relocate 'net.bytebuddy', 'me.lucko.spark.lib.bytebuddy'
+        relocate 'com.google.protobuf', 'me.lucko.spark.lib.protobuf'
+        relocate 'org.objectweb.asm', 'me.lucko.spark.lib.asm'
+        relocate 'one.profiler', 'me.lucko.spark.lib.asyncprofiler'
+        relocate 'me.lucko.bytesocks.client', 'me.lucko.spark.lib.bytesocks'
+        relocate 'org.java_websocket', 'me.lucko.spark.lib.bytesocks.ws'
     }
 }
 
