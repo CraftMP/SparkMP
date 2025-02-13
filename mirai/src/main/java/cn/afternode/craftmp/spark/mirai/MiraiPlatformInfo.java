@@ -2,6 +2,7 @@ package cn.afternode.craftmp.spark.mirai;
 
 import me.lucko.spark.common.platform.PlatformInfo;
 import net.mamoe.mirai.console.MiraiConsole;
+import net.mamoe.mirai.console.MiraiConsoleImplementation;
 
 public class MiraiPlatformInfo implements PlatformInfo {
     @Override
@@ -11,12 +12,12 @@ public class MiraiPlatformInfo implements PlatformInfo {
 
     @Override
     public String getName() {
-        return "Mirai";
+        return "MiraiConsole";
     }
 
     @Override
     public String getBrand() {
-        return "MiraiConsole";
+        return MiraiConsoleImplementation.getInstance().getFrontEndDescription().getName();
     }
 
     @Override
