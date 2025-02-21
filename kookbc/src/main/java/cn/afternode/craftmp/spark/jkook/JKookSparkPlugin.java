@@ -114,8 +114,8 @@ public class JKookSparkPlugin extends BasePlugin implements SparkPlugin {
         }
 
         CommandSender created = this.createdSenders.get(id);
-        if (sender instanceof ConsoleCommandSender console) {
-            created = new JKookConsoleCommandSender(this, console);
+        if (sender instanceof ConsoleCommandSender) {
+            created = this.console;
         } else if (sender instanceof User user) {
             if (channel == null)
                 created = new JKookUserCommandSender(this, user);
