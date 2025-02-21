@@ -2,4 +2,5 @@ rootProject.name = 'SparkMP'
 
 includeBuild "spark"
 
+include ":kookbc"
 include ":mirai"

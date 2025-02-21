@@ -1,0 +1,5 @@
+name: "spark"
+version: "${version}"
+authors: ["lucko", "Zyklone"]
+api-version: "${apiVersion}"
+main: "cn.afternode.craftmp.spark.jkook.JKookSparkPlugin"
